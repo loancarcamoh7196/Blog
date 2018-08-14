@@ -20,8 +20,11 @@ class ArticlesController extends Controller
     public function index(Request $request)
     {
         //
-        $a = Article::orderby('id','ASC')->orderby('id','ASC')->paginate(5);
-
+        $a = Article::search($request->title)->orderby('id','ASC')->paginate(5);
+        $a->each(function ($articles){
+            $articles->category;
+            $articles->user;
+        });
         return view('admin.articles.index')->with('list',$a);
     }
 
@@ -95,7 +98,14 @@ class ArticlesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $a = Article::find($id);
+        $a->category;
+        $categories = Category::orderby('name','DESC')->pluck('name','id');
+        $tags = Tag::orderby('name','DESC')->pluck('name','id');
+
+        $my_tags = $a->tags->pluck('id')->ToArray();
+
+        return view('admin.articles.edit')->with('article',$a)->with('categories',$categories)->with('tags',$tags)->with('my_tags',$my_tags);
     }
 
     /**
@@ -107,7 +117,16 @@ class ArticlesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $a = Article::find($id);
+        $a->fill($request->all());
+        $a->save();
+
+        $a->tags()->sync($request->tags);
+
+        Flash("Se ha actualizado existosamente articulo: ".$a->title,'success')->important();
+
+        return redirect()->route('articles.index');
     }
 
     /**
@@ -118,6 +137,11 @@ class ArticlesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $a = Article:: find($id);
+        $a-> delete();
+
+        Flash("Se ha borrado existosamente articulo: ".$a->title,'danger')->important();
+
+        return redirect()->route('articles.index');
     }
 }

@@ -24,14 +24,14 @@
 @section ('content')
 	
 	<div class="table-responsive-xl">
-		<table  class="table table-dark">
+		<table  class="table table-striped table-dark">
 			<thead>
 				<tr>
 					<th scope="col"> ID</th>
 					<th scope="col"> Titulo</th>
 					<th scope="col"> Contenido</th>
-					<th scope="col"> User ID</th>
-					<th scope="col">  Category ID</th>
+					<th scope="col"> User </th>
+					<th scope="col">  Categoria</th>
 					<th scope="col"> Acción</th>
 				</tr>
 			</thead>
@@ -42,8 +42,8 @@
 						<th scope="row">{{ $a->id }} </th>
 						<td>{{ $a->title }}</td>
 						<td>{{ $a->content }}</td>
-						<td>{{ $a->user_id }}</td>
-						<td>{{ $a->category_id }}</td>
+						<td>{{ $a->user->name }}</td>
+						<td>{{ $a->category->name }}</td>
 						
 						<td>
 							<a href="{{ route('articles.edit',$a->id) }}" class="btn btn-warning">
