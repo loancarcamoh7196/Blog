@@ -26,7 +26,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('tags.index') }}">Imagenes</a>
+                <a class="nav-link" href="{{ route('images.index') }}">Imagenes</a>
             </li>
 
             <li class="nav-item">

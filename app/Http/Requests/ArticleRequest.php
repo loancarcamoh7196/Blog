@@ -26,9 +26,9 @@ class ArticleRequest extends FormRequest
         return [
             'title'         =>  'required|max:250|min:8|unique:articles,title',
             'category_id'   =>  'required',
-            'content'       =>  'required|min:60',
+            'content'       =>  'required|min:10',
             'tags'          =>  'nullable',
-            'image'         =>  'required'
+            'image'         =>  'required|image'
         ];
     }
 }

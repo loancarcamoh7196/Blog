@@ -4,9 +4,6 @@
 @section('article_title','Agregar Articulo')
 
 @section ('content')
-	
-	
-
 	{!! Form::open(['route' => 'articles.store','method' => 'POST', 'files'=>true]) !!}
 		
 		<div class="form-group">
@@ -26,7 +23,7 @@
 
 		<div class="form-group">
 			{!! Form::label('tags','Tags') !!}
-			{!! Form::select('tags[]', $tags,null,['class' => 'form-control select-tag' ,'required', 'multiple']) !!}
+			{!! Form::select('tags[]', $tags,null,['class' => 'form-control select-tag', 'multiple']) !!}
 		</div>
 
 		<div class="form-group">
