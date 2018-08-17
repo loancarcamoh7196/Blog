@@ -9,14 +9,8 @@
     
       
     <nav class="nav nav-masthead justify-content-center">
-      
                 <a class="nav-link" href="{{ route('users.index') }}">Usuarios</a>
-            
-
-            
                 <a class="nav-link" href="{{ route('categories.index') }}">Categorias</a>
-           
-
             
                 <a class="nav-link" href="{{ route('articles.index') }}">Articulos</a>
            
