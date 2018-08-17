@@ -4,7 +4,7 @@
 @section('article_title','Tag')
 
 @section('func')
-	<nav class="navbar navbar-light bg-light" >
+	<nav class="navbar navbar-light bg-dark" >
 		
 			<a href="{{ route('tags.create') }}" class="btn btn-outline-info btn-rounded btn-mg " tabindex="-1" role="button" aria-disabled="false"> 
 				<i class="fas fa-plus" aria-hidden="true"> </i> Agregar

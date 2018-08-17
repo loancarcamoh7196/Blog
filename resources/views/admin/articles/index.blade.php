@@ -4,7 +4,7 @@
 @section('article_title','Articulos')
 
 @section('func')
-	<nav class="navbar navbar-light bg-light" >
+	<nav class="navbar navbar-light bg-dark" >
 		
 			<a href="{{ route('articles.create') }}" class="btn btn-outline-info btn-rounded btn-mg " tabindex="-1" role="button" aria-disabled="false"> 
 				<i class="fas fa-plus" aria-hidden="true"> </i> Agregar
@@ -12,7 +12,7 @@
 		
 			{!! Form::open(['route'=>'articles.index','method'=>'GET','class' =>"form-inline"  ]) !!}
 				<div class="input-group">
-					{!! Form::text('title',null,['class' =>"form-control mr-sm-2",'type'=> "search", 'aria-label' => "Search",'placeholder'=>'Buscar ...' ]) !!}
+					{!! Form::text('title',null,['class' =>"form-control mr-sm-2 bg-dark text-light",'type'=> "search", 'aria-label' => "Search",'placeholder'=>'Buscar ...' ]) !!}
 					 
 					<button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search" aria-hidden="true"></i></button>	
 				</div>
@@ -24,12 +24,12 @@
 @section ('content')
 	
 	<div class="table-responsive-xl">
-		<table  class="table table-striped table-dark">
+		<table  class="table table-hover table-dark">
 			<thead>
 				<tr>
 					<th scope="col"> ID</th>
 					<th scope="col"> Titulo</th>
-					<th scope="col"> Contenido</th>
+					
 					<th scope="col"> User </th>
 					<th scope="col">  Categoria</th>
 					<th scope="col"> Acción</th>
@@ -41,7 +41,7 @@
 					<tr>
 						<th scope="row">{{ $a->id }} </th>
 						<td>{{ $a->title }}</td>
-						<td>{{ $a->content }}</td>
+						
 						<td>{{ $a->user->name }}</td>
 						<td>{{ $a->category->name }}</td>
 						

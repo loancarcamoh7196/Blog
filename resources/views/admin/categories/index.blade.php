@@ -4,7 +4,7 @@
 @section('article_title','Categoria')
 
 @section('func')
-	<nav class="navbar navbar-light bg-light" >
+	<nav class="navbar navbar-light bg-dark" >
 		
 			<a href="{{ route('categories.create') }}" class="btn btn-outline-info btn-rounded btn-mg " tabindex="-1" role="button" aria-disabled="false"> 
 				<i class="fas fa-plus" aria-hidden="true"> </i> Agregar
@@ -34,7 +34,7 @@
 			</thead>
 			<tbody>
 
-				@foreach($category as $c)
+				@foreach($list as $c)
 					<tr>
 						<th scope="row">{{ $c->id }} </th>
 						<td>{{ $c->name }}</td>
@@ -56,6 +56,6 @@
 	</div>
 
 	
-	{!! $category-> render() !!}
+	{!! $list-> render() !!}
 
 @endsection

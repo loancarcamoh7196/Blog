@@ -20,16 +20,24 @@ Route::get('logout',  [
 	'as' => 'logout', 
 	'uses' =>  '\App\Http\Controllers\Auth\LoginController@logout'
 ]);
-Route::get('/admin', 'HomeController@index');
+
+Route::get ('/',['as' => 'front.index',function (){
+		return view('front.index');
+	}]);
 
 
-
+/*
 Route::get('/', function () {
     return view('index');
 });
-
+*/
 
 Route::group(['prefix' => 'admin','middleware'=>'auth'], function (){
+	
+	Route::get ('/',['as' => 'admin.index',function (){
+		return view('admin.index');
+	}]);
+
 	Route::resource('users','UsersController');
 	Route::get('users/{id}/destroy',[
 		'uses' =>	'UsersController@destroy',
@@ -59,7 +67,3 @@ Route::group(['prefix' => 'admin','middleware'=>'auth'], function (){
 		'as'	=>	'images.index'
 	]);
 });
-
-
-
-

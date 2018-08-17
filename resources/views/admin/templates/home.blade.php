@@ -15,22 +15,24 @@
 
 		@yield('css')
 	</head>
-	<body style="background-color: #333; color: white;">
-		<div class="container-fluid">
-
-			@include('admin.templates.partials.header')
-			@include('admin.templates.partials.nav')
+	<body>
+		<div class="inner">
+				<div class="fixed-top" >
+					<div clas>
+						<a class="btn btn-sm btn-danger" href="{{ route('logout') }}">Cerrar sesión</a>
+						{{ Auth::user()->name }} &nbsp
+					</div>	
+				</div>
+			</div>		
+		<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column text-center">
+			
+			@include('admin.templates.partials.header-home')
+			
 		
 			<main role="main" class="container">
 		     	<div class="row">
 			        <div class="col-md-12 blog-main">
-			        	<!-- Titulo de Articulo -->
-				        <h3 class="pb-3 mb-4 font- border-bottom">
-							<br>
-
-				            @yield('article_title','default')
-				        </h3>
-					
+			        	
 							
 			          <!-- Post -->
 			          	<section class="body">
@@ -46,14 +48,13 @@
 		    </main><!-- /.container -->
 
 			<br>
-			<footer class="card-footer text-center">
-			    <p>
-			    	Blog M & M 
-			    	<a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.
-			    </p>
-			    <p>
-		        	<a href="#">Back to top</a>
-		      	</p>
+			<footer class="mastfot mt-auto">
+			    <div class="inner">
+			    	<p>
+				    	Blog M & M 
+				    	<a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.
+			    	</p>
+			    </div>
 		    </footer>
 		</div>
 			
@@ -63,6 +64,8 @@
 		<script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 
 		<script src="{{  asset('plugins/chosen_v1.8.7/chosen.jquery.js') }} "></script>
-		@yield('js')	
+		@yield('js')
+		
+		
 	</body>
 </html>
