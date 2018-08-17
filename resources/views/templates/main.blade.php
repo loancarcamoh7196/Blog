@@ -11,60 +11,53 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/chosen_v1.8.7/chosen.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/trumbowyg/ui/trumbowyg.css') }}">
-    
-
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/blog.css') }}">
+    @yield('css')
 
 </head>
-<body>
-	<div class="container-fluid">
+	<body>
+		<div class="container-fluid">
 
-	@include('templates.partials.header')
-	@include('templates.partials.nav')
-	
-	<main role="main" class="container">
-      <div class="row">
-        <div class="col-md-8 blog-main">
-        	<!-- Titulo de Articulo -->
-	        <h3 class="pb-3 mb-4 font-italic border-bottom">
+			@include('templates.partials.header')
+			@include('templates.partials.nav')
+			
+			<main role="main" class="container">
+		      	<div class="row">
+		        	<div class="col-md-8 blog-main">
+			        	<!-- Titulo de Articulo -->
+				        <h3 class="pb-3 mb-4 font-italic border-bottom">
+				            @yield('article_title','default')
+				        </h3>
+				
+			          <!-- Post -->
+			          	<section class="card-body">
+							@include('flash::message')
+							@include('templates.partials.errors')
+							@yield('content')
+						</section><!-- Fin  Post -->
+					</div>	        
+		      	</div><!-- /.row -->
+		    </main><!-- /.container -->
 
-	            @yield('article_title','default')
-	        </h3>
+			<footer class="card-footer ">
+		      <p>Blog M & M <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+		      <p>
+		        <a href="#">Back to top</a>
+		      </p>
+		    </footer>
+		</div>
+		<script src="{{ asset('plugins/jquery/jquery-3.3.1.js') }}"></script>
+		<script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+		<script src="{{ asset('plugins/chosen_v1.8.7/chosen.jquery.js') }}"></script>
+		<script scr="{{ asset('plugins/trumbowyg/trumbowyg.min.js') }}"></script>
 		
-				
-          <!-- Post -->
-          	<section class="body">
-				@include('flash::message')
-				@include('templates.partials.errors')
-				@yield('content')
-				
-			</section>
-          <!-- Fin  Post -->
-
-        
-
-      </div><!-- /.row -->
-
-    </main><!-- /.container -->
-	<br>
-	<footer class=" blog-footer ">
-      <p>Blog M & M <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-      <p>
-        <a href="#">Back to top</a>
-      </p>
-    </footer>
-
-	<script src="{{ asset('plugins/jquery/jquery-3.3.1.js') }}"></script>
-	<script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script>
-	<script src="{{ asset('plugins/chosen_v1.8.7/chosen.jquery.js') }}"></script>
-	<script scr="{{ asset('plugins/trumbowyg/trumbowyg.min.js') }}"></script>
-	</div>
-	@yield('js')
-	 <script>
-      Holder.addTheme('thumb', {
-        bg: '#55595c',
-        fg: '#eceeef',
-        text: 'Thumbnail'
-      });
-    </script>
-</body>
+		@yield('js')
+		 <script>
+	      Holder.addTheme('thumb', {
+	        bg: '#55595c',
+	        fg: '#eceeef',
+	        text: 'Thumbnail'
+	      });
+	    </script>
+	</body>
 </html>
