@@ -16,17 +16,14 @@
 
 </head>
 	<body>
-		<div class="container-fluid">
+		<div class="container">
 
 			@include('templates.partials.header')
 			@include('templates.partials.nav')
-			
-			
-
-     	@include('templates.partials.promo')
+     		
 			<main role="main" class="container">
 		      	<div class="row">
-		        	
+		        	<div class="col-md-8 blog-main">
 			        	<!-- Titulo de Articulo -->
 				        <h3 class="pb-3 mb-4 font-italic border-bottom">
 				            @yield('article_title','default')
@@ -34,20 +31,22 @@
 				
 			          <!-- Post -->
 			          	
-							
+							@include('flash::message')
+							@include('templates.partials.errors')
 							@yield('content')
 						<!-- Fin  Post -->
-						        
+					</div>
+					@include('templates.partials.panel_lateral')	        
 		      	</div><!-- /.row -->
 		    </main><!-- /.container -->
-
-			<footer class="card-footer ">
+		</div>
+		<footer class="card-footer ">
 		      <p>Blog M & M <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
 		      <p>
 		        <a href="#">Back to top</a>
 		      </p>
-		    </footer>
-		</div>
+		</footer>
+		
 		<script src="{{ asset('plugins/jquery/jquery-3.3.1.js') }}"></script>
 		<script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 		<script src="{{ asset('plugins/chosen_v1.8.7/chosen.jquery.js') }}"></script>

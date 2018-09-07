@@ -4,9 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
+use Carbon\Carbon;
+use App\Category;
+use App\Tag;
 
 class FrontController extends Controller
 {
+    
+    public function __construct()
+    {
+        Carbon::setLocale('es');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,10 +23,12 @@ class FrontController extends Controller
      */
     public function index()
     {
+       
         $articles = Article::orderBy('id','DESC')->paginate(5);
         $articles->each(function ($articles)
         {
             $articles->category;
+            $articles->images;
         });
 
         return view('front.index')->with('articles',$articles);
@@ -30,62 +41,28 @@ class FrontController extends Controller
      */
     public function create()
     {
-        //
+        $articles = Article::orderBy('id','DESC')->paginate(5);
+        $articles->each(function ($articles)
+        {
+            $articles->category;
+            $articles->images;
+        });
+        return view('front.articles')->with('articles',$articles);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function searchCategory($name)
     {
-        //
-    }
+        $category = Category::Search($name)->first();
+        $articles = $category->articles()->paginate(5);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        $articles->each(function ($articles)
+        {
+            $articles->category;
+            $articles->images;
+        });
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        return ;
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+  
 }

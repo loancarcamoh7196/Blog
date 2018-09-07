@@ -29,6 +29,20 @@ Route::get('/',[
 	'as' 	=>	'front.index',
 	'uses'	=>	'FrontController@index'
 ]);
+Route::get('articles',[
+	'as' 	=>	'front.articles',
+	'uses'	=>	'FrontController@create'
+]);
+
+Route::get('categories/{name}',[
+	'as' 	=>	'front.search.category',
+	'uses'	=>	'FrontController@searchCategory'
+]);
+
+Route::get('tags/{name}',[
+	'as' 	=>	'front.search.tag',
+	'uses'	=>	'FrontController@searchTag'
+]);
 
 /*
 Route::get('/', function () {

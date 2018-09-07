@@ -5,29 +5,23 @@
           </div>
 
           <div class="p-3">
-            <h4 class="font-italic">Archives</h4>
+            <h4 class="font-italic">Categorias</h4>
             <ol class="list-unstyled mb-0">
-              <li><a href="#">March 2014</a></li>
-              <li><a href="#">February 2014</a></li>
-              <li><a href="#">January 2014</a></li>
-              <li><a href="#">December 2013</a></li>
-              <li><a href="#">November 2013</a></li>
-              <li><a href="#">October 2013</a></li>
-              <li><a href="#">September 2013</a></li>
-              <li><a href="#">August 2013</a></li>
-              <li><a href="#">July 2013</a></li>
-              <li><a href="#">June 2013</a></li>
-              <li><a href="#">May 2013</a></li>
-              <li><a href="#">April 2013</a></li>
+              @foreach ($categories as $c)
+                <li>
+                  <a href="{{ route('front.search.category',$c->name) }}">{{ $c->name }}</a> 
+                  <a href="#" class="btn btn-sm btn-danger"> {{ $c->articles->count() }}</a>
+                </li>
+              @endforeach
             </ol>
           </div>
 
           <div class="p-3">
-            <h4 class="font-italic">Elsewhere</h4>
+            <h4 class="font-italic">Tags</h4>
             <ol class="list-unstyled">
-              <li><a href="#">GitHub</a></li>
-              <li><a href="#">Twitter</a></li>
-              <li><a href="#">Facebook</a></li>
+              @foreach ($tags as $t)
+                  <a href="{{ route('front.search.tag',$t->name) }}" class="btn btn-sm btn-outline-success">{{ $t->name }}</a> 
+              @endforeach
             </ol>
           </div>
 </aside><!-- /.blog-sidebar -->

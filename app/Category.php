@@ -17,4 +17,10 @@ class Category extends Model
     {
     	return $this->hasMany('App\Article');
     }
+
+
+    public function scopeSearch($query,$name)
+    {
+    	return $query->where('name','=',$name);
+    }
 }
