@@ -24,6 +24,7 @@ class ArticlesController extends Controller
         $a->each(function ($articles){
             $articles->category;
             $articles->user;
+            $articles->images;
         });
         return view('admin.articles.index')->with('list',$a);
     }

@@ -20,11 +20,15 @@ Route::get('logout',  [
 	'as' => 'logout', 
 	'uses' =>  '\App\Http\Controllers\Auth\LoginController@logout'
 ]);
-
+/*
 Route::get ('/',['as' => 'front.index',function (){
 		return view('front.index');
 	}]);
-
+*/
+Route::get('/',[
+	'as' 	=>	'front.index',
+	'uses'	=>	'FrontController@index'
+]);
 
 /*
 Route::get('/', function () {

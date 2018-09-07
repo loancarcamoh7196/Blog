@@ -26,19 +26,18 @@
      	@include('templates.partials.promo')
 			<main role="main" class="container">
 		      	<div class="row">
-		        	<div class="col-md-8 blog-main">
+		        	
 			        	<!-- Titulo de Articulo -->
 				        <h3 class="pb-3 mb-4 font-italic border-bottom">
 				            @yield('article_title','default')
 				        </h3>
 				
 			          <!-- Post -->
-			          	<section class="card-body">
-							@include('flash::message')
-							@include('templates.partials.errors')
+			          	
+							
 							@yield('content')
-						</section><!-- Fin  Post -->
-					</div>	        
+						<!-- Fin  Post -->
+						        
 		      	</div><!-- /.row -->
 		    </main><!-- /.container -->
 
