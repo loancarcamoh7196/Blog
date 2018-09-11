@@ -60,7 +60,15 @@ class Article extends Model
     {
         return $query->where('title','LIKE','%'.$title.'%');
     }
-    
+
+    public static function findBySlugOrFail($slug, $columns = array('*') ) 
+    { 
+        if ( ! is_null($slug = static::whereSlug($slug)->first($columns))) { 
+            return $slug; 
+        } 
+  
+        throw new ModelNotFoundException; 
+    } 
 }
 
 

@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use App\Category;
 use App\Tag;
 
+
 class FrontController extends Controller
 {
     
@@ -62,7 +63,16 @@ class FrontController extends Controller
             $articles->images;
         });
 
-        return ;
+        return view('front.index')->with('articles',$articles);
+    }
+
+    public function viewArticle($slug)
+    {
+        $article = Article::findBySlugOrFail($slug);
+        $article->category;
+        $article->user;
+        $article->tags;
+        return view('front.articles')->with('article',$article);
     }
   
 }

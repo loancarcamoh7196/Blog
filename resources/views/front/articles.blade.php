@@ -7,43 +7,37 @@
 
 @section ('content')
     
-    @foreach ($articles as $a)
+   
     	<div class="blog-post">
-    		 @if($a->category->name == 'Programación') {<strong class="d-inline-block mb-2 text-success">{{ $a->category->name }}</strong>}
-    		 @endif
-            <h2 class="blog-post-title">
-            	{{ $a->title }}
-            	<span class="btn btn-sm btn-outline-danger "> {!! $a->category->name !!} </span>
-            </h2>
+    		@if($article->category->name == 'Programación' or $article->category->name == 'Noticias') <strong class="d-inline-block mb-2 text-success">{{ $article->category->name }}</strong>
+    		@elseif($article->category->name == 'Laravel')<strong class="d-inline-block mb-2 text-danger">{{ $article->category->name }}</strong>
+    		@else
+				<strong class="d-inline-block mb-2 text-warning">{{ $article->category->name }}</strong>
+    		@endif
+            <div class="blog-post-title pb-3 mb-5 font-italic border-bottom">
+            	<h1>{{ $article->title }}</h1> 
+            </div>
             
-            <p class="blog-post-meta">{{ $a->created_at }} 
-            	Escrito por <a href="#">{{ $a->user->name }}</a>
-            	<br>
-            	
-            </p>
             <p class="blog-post-meta">
-            	
+            	Escrito por <a href="#">{{ $article->user->name }}</a>
+            	~ Hace {{ $article->created_at->diffForHumans() }}
+            	<br>	
             </p>
-            
-		
-				@foreach ($a->images as $image)
-			
+			@foreach ($article->images as $image)
+				
 				<div class="card mb-2 shadow-sm">
-					<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Thumbnail [75%x325]" src="{{ asset('images/articles/'.$image->name) }}"  data-holder-rendered="true" style="height: 325px; width: 75%; display: block;">
-					<div class="card-body">
-						
-						<div class="d-flex cnter-content-between align-items-left">
-							<div class="btn-group">…</div>
-								<button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
-								<button type="button" class="btn btn-sm btn-outline-secondary">Editar</button>
-							</div>
-							<small class="text-muted">{{ $a->created_at->diffForHumans() }}</small>
-						</div>
+					<img class="card-img-top"  src="{{ asset('images/articles/'.$image->name) }}"  data-holder-rendered="true" style="height: 325px; width: 95%; display: block;" />
 				</div>
-		
-				@endforeach     
-        </div><!-- /.blog-post -->
-    @endforeach
-    {{ $articles->render() }}
 
+				<br>
+					<p>
+					{{ $article->content}}
+				</p>
+				 <br>
+			
+				<a href="{{ route('front.index') }}" class="btn btn-outline-danger"> Volver a Home</a>
+			@endforeach     
+        </div><!-- /.blog-post -->
+    
+		
 @endsection

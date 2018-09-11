@@ -44,6 +44,10 @@ Route::get('tags/{name}',[
 	'uses'	=>	'FrontController@searchTag'
 ]);
 
+Route::get('articles/{slig}',[
+	'as' 	=>	'front.view.article',
+	'uses'	=>	'FrontController@viewArticle'
+]);
 /*
 Route::get('/', function () {
     return view('index');

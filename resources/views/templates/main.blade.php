@@ -25,9 +25,7 @@
 		      	<div class="row">
 		        	<div class="col-md-8 blog-main">
 			        	<!-- Titulo de Articulo -->
-				        <h3 class="pb-3 mb-4 font-italic border-bottom">
-				            @yield('article_title','default')
-				        </h3>
+				        <br><br>				        
 				
 			          <!-- Post -->
 			          	
