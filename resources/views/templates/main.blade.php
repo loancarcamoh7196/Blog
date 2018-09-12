@@ -23,7 +23,7 @@
      		
 			<main role="main" class="container">
 		      	<div class="row">
-		        	<div class="col-md-8 blog-main">
+		        	
 			        	<!-- Titulo de Articulo -->
 				        <br><br>				        
 				
@@ -33,7 +33,7 @@
 							@include('templates.partials.errors')
 							@yield('content')
 						<!-- Fin  Post -->
-					</div>
+					
 					@include('templates.partials.panel_lateral')	        
 		      	</div><!-- /.row -->
 		    </main><!-- /.container -->
@@ -58,5 +58,6 @@
 	        text: 'Thumbnail'
 	      });
 	    </script>
+	    @yield('script')
 	</body>
 </html>

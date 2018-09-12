@@ -6,7 +6,7 @@
 	
 
 @section ('content')
-    
+    <div class="col-md-8 blog-main">
     @foreach ($articles as $a)
     	<div class="blog-post">
     		@if($a->category->name == 'Programación' or $a->category->name == 'Noticias') <strong class="d-inline-block mb-2 text-success">{{ $a->category->name }}</strong>
@@ -35,5 +35,6 @@
         </div><!-- /.blog-post -->
     @endforeach
     {{ $articles->render() }}
+</div>
 @endsection
 

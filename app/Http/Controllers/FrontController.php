@@ -66,6 +66,21 @@ class FrontController extends Controller
         return view('front.index')->with('articles',$articles);
     }
 
+    public function searchTag($name)
+    {
+        $tag = Tag::Search($name)->first();
+        $articles = $tag->articles()->paginate(5);
+
+
+        $tag->each(function ($articles)
+        {
+            $articles->tag;
+            $articles->images;
+        });
+
+        return view('front.index')->with('articles',$articles);
+    }
+
     public function viewArticle($slug)
     {
         $article = Article::findBySlugOrFail($slug);

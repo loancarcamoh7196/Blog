@@ -69,6 +69,8 @@ class Article extends Model
   
         throw new ModelNotFoundException; 
     } 
+
+    
 }
 
 
