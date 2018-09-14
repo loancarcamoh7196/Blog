@@ -54,7 +54,7 @@ class UsersController extends Controller
         try
         {
             $user->save();
-            Flash("Se ha registrado el usuario: ".$user->name." de forma exitosa.",'sucess')->important();  
+            Flash("Se ha registrado el usuario: ".$user->name." de forma exitosa.",'success')->important();  
         } catch(Exception $e){
             Flash("Error: ".$e,'warning')->important();  
         }
@@ -106,7 +106,7 @@ class UsersController extends Controller
 
         $user->save();
 
-        Flash("Se ha editado exitosamente usuario : ".$user->name,'sucess')->important();
+        Flash("Se ha editado exitosamente usuario : ".$user->name,'warning')->important();
 
         return redirect()->route('users.index');
     }
@@ -123,7 +123,7 @@ class UsersController extends Controller
 
         $user->delete();
 
-        Flash("Se ha borrado existosamente el usuario: ".$user->name,'error')->important();
+        Flash("Se ha borrado existosamente el usuario: ".$user->name,'danger')->important();
 
         return redirect()->route('users.index');
     }

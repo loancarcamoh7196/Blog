@@ -30,7 +30,7 @@
 
 				<br>
 					<p>
-					{{ $article->content}}
+					{!! $article->content!!}
 				</p>
 				 <br>
 			

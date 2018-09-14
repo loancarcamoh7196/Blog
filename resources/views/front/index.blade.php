@@ -10,7 +10,7 @@
     @foreach ($articles as $a)
     	<div class="blog-post">
     		@if($a->category->name == 'Programación' or $a->category->name == 'Noticias') <strong class="d-inline-block mb-2 text-success">{{ $a->category->name }}</strong>
-    		@elseif($a->category->name == 'Laravel')<strong class="d-inline-block mb-2 text-danger">{{ $a->category->name }}</strong>
+    		@elseif($a->category->name == 'Laravel')<strong class="d-inline-block mb-2 text-danger"> {!! $a->category->name !!} </strong>
     		@else
 				<strong class="d-inline-block mb-2 text-warning">{{ $a->category->name }}</strong>
     		@endif
@@ -28,7 +28,7 @@
 				<div class="card mb-2 shadow-sm">
 						<img class="card-img-top"  src="{{ asset('images/articles/'.$image->name) }}"  data-holder-rendered="true" style="height: 325px; width: 95%; display: block;" />
 				</div>
-				{{ $a->content}}
+				{!! $a->content !!}
 				<br> <br>
 				<a href="{{ route('front.view.article',$a->slug) }}" class="btn btn-outline-primary"> Ver más...</a>
 			@endforeach     

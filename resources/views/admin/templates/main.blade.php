@@ -15,7 +15,7 @@
 
 		@yield('css')
 	</head>
-	<body style="background-color: #333; color: white;">
+	<body style="">
 		<div class="container-fluid">
 
 			@include('admin.templates.partials.header')
