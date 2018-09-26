@@ -14,9 +14,11 @@
             </li>
             -->
 
-            <li class="nav-item">
+            @if (Auth::user()->isAdmin())
+              <li class="nav-item">
                 <a class="nav-link" href="{{ route('users.index') }}">Usuarios</a>
             </li>
+            @endif
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('categories.index') }}">Categorias</a>

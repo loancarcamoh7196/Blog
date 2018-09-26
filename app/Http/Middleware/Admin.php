@@ -3,9 +3,28 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Contracts\Auth\Guard;
 
 class Admin
 {
+    /**
+     * The authentication factory instance.
+     *
+     * @var \Illuminate\Contracts\Auth\Factory
+     */
+    protected $auth;
+
+    /**
+     * Create a new middleware instance.
+     *
+     * @param  \Illuminate\Contracts\Auth\Factory  $auth
+     * @return void
+     */
+    public function __construct(Guard $auth)
+    {
+        $this->auth = $auth;
+    }
+
     /**
      * Handle an incoming request.
      *
@@ -15,8 +34,18 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-       
-        return $next($request);
+        if($this->auth->user()->isAdmin())
+        {
+            return $next($request);
+        }
+        else
+        {
+            /*
+            dd("Para acceder a esta paginas debes tener rol Administrador");
+            redirect()->route('front.index');
+            */
+            abort(401);
+        }
     }
 
 }
